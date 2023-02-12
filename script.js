@@ -4,11 +4,23 @@ const url = "https://dog.ceo/api/breeds/image/random";
 
 button.addEventListener('click',getNewImg)
 
-async function getNewImg(){
- const imgEl = document.createElement("img");
- imgEl.classList.add("img");
- imgContainer.appendChild(imgEl);
- await fetch(url)
-   .then((response) => response.json())
-   .then((json) => imgEl.src = json.message);
+ function getNewImg(){
+//  const imgEl = document.createElement("img");
+//  imgEl.classList.add("img");
+//  imgContainer.appendChild(imgEl);
+  fetch(url)
+   .then(response => response.json())
+   .then(data => data.message)
+   .then(url=>
+    // imgEl.src =url,
+    imgContainer.innerHTML=`<img src="${url}" alt="img">`
+    );
 }
+
+// fetch(url)
+// .then(response=>response.json())
+// .then(data=>data.message)
+// .then(url=>console.log(url))
+
+
+// create element dersen resimler sürekli eklenir ama ınner html dedinmi konteyner içindeki tek ımg nin url si değişir
